@@ -3,12 +3,34 @@ let mainDisplay = document.querySelector('.mainDisplay');
 let serviseField = document.querySelector('.servise');
 let numberField = document.querySelector('.number');
 let operatorField = document.querySelector('.operator');
+let state = {
+    value: 0,
+}
+
+const styles = (elem, style={}) => {
+    let res = "";
+    for (let key in style) {
+        //console.log(key, style[key]);
+        res += `${key}: ${style[key]};`
+    }
+    elem.style.cssText = res;
+}
+styles(mainDisplay, {
+    color: "white",
+    fontSize: "18px"
+});
+
+const renderDisplay = () => mainDisplay.innerHTML = state.value;
+renderDisplay();
 
 let keyName;
-const createButton = (item) => {
+const createButton = (item, index) => {
   let button = document.createElement('button');
   keyName = item;
   button.classList.add('btn');
+  button.dataset.id = index;
+  button.dataset.value = item;
+
   button.innerHTML = `<em>${item}</em>`;
   return button;
 }
@@ -16,13 +38,21 @@ const createButton = (item) => {
 //  SERVISE Keys
 ['M1','RM1','M2','RM2','M3','RM3','#','#','#','#','#','#','#','#','#','#'].forEach(item => serviseField.append(createButton(item)));
 //  NUMBER Keys
-[1,2,3,4,5,6,7,8,9,0,'.','<='].forEach(item => numberField.append(createButton(item)));
+[1,2,3,4,5,6,7,8,9,0,'.','<='].forEach((item, index) => numberField.append(createButton(item, index)));
 // OPERATOR Keys
 ['+','-','*','/','(',')','%','sqrt','x^2','@','@','@','@','@','@','@','@','@','@','@','@','@','@','@','@','@','@','@','@','@','@','@'].forEach(item => operatorField.append(createButton(item)));
 
 
 numberField.addEventListener( 'click', function(event) {
-    console.log('you ' + event.type + ' key ' + event.target );
+    //console.log('you ' + event.type + ' key ' + event.target );
+    if (event.target.matches('.btn')) {
+        const id = event.target.dataset.id;
+        const elem = event.target;
+        const value = event.target.dataset.value;
+        console.log({id, elem, value});
+        state.value = state.value += value;  // как сделать только цифры и  точку ???
+        renderDisplay();
+    }
 });
 
 /********/
