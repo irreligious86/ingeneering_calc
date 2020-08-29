@@ -1,0 +1,112 @@
+
+h1 {
+	margin: auto  25px;
+}
+
+#calc-body {
+	/* pattern css background */
+	 /*background: 
+        linear-gradient(180deg, rgba(248, 184, 139,0) 20%, rgba(248, 184, 139,.1) 20%, rgba(248, 184, 139,.1) 40%, rgba(248, 184, 139,.2) 40%, rgba(248, 184, 139,.2) 60%, rgba(248, 184, 139,.4) 60%, rgba(248, 184, 139,.4) 80%, rgba(248, 184, 139,.5) 80%),
+    linear-gradient(45deg, rgba(250, 248, 132,.3) 20%, rgba(250, 248, 132,.4) 20%, rgba(250, 248, 132,.4) 40%, rgba(250, 248, 132,.5) 40%, rgba(250, 248, 132,.5) 60%, rgba(250, 248, 132,.6) 60%, rgba(250, 248, 132,.6) 80%, rgba(250, 248, 132,.7) 80%),
+    linear-gradient(-45deg, rgba(186, 237, 145,0) 20%, rgba(186, 237, 145,.1) 20%, rgba(186, 237, 145,.1) 40%, rgba(186, 237, 145,.2) 40%, rgba(186, 237, 145,.2) 60%, rgba(186, 237, 145,.4) 60%, rgba(186, 237, 145,.4) 80%, rgba(186, 237, 145,.6) 80%),
+        linear-gradient(90deg, rgba(178, 206, 254,0) 20%, rgba(178, 206, 254,.3) 20%, rgba(178, 206, 254,.3) 40%, rgba(178, 206, 254,.5) 40%, rgba(178, 206, 254,.5) 60%, rgba(178, 206, 254,.7) 60%, rgba(178, 206, 254,.7) 80%, rgba(178, 206, 254,.8) 80%),
+    linear-gradient(-90deg, rgba(242, 162, 232,0) 20%, rgba(242, 162, 232,.4) 20%, rgba(242, 162, 232,.4) 40%, rgba(242, 162, 232,.5) 40%, rgba(242, 162, 232,.5) 60%, rgba(242, 162, 232,.6) 60%, rgba(242, 162, 232,.6) 80%, rgba(242, 162, 232,.8) 80%),
+    linear-gradient(180deg, rgba(254, 163, 170,0) 20%, rgba(254, 163, 170,.4) 20%, rgba(254, 163, 170,.4) 40%, rgba(254, 163, 170,.6) 40%, rgba(254, 163, 170,.6) 60%, rgba(254, 163, 170,.8) 60%, rgba(254, 163, 170,.8) 80%, rgba(254, 163, 170,.9) 80%);
+    background-color: rgb(254, 163, 170);
+    background-size: 100% 100%;
+    min-height: 100%;*/
+    /*  end pattern  */
+    background-color: #999;
+	border: 5px groove silver;
+	border-radius: 3px;
+	box-shadow: 0 0 40px black;
+	color: darkred;
+	margin: 5px;
+	padding: 10px;
+	display: grid;
+	grid-template-areas: 
+    "display display display"
+    "servise-btn number-btn operator-btn"
+    "footer footer footer";
+	grid-template-rows:1.5fr 3fr 1fr;
+	grid-template-columns:1fr 2fr 1.5fr;
+	grid-gap: 1vw;
+	text-align: center;
+
+}
+
+#calc-body>div {
+	box-shadow: 10px 10px 10px #444 , 0 0 3px #666;
+	border-radius: 6px;
+	/*border: 1px solid black;*/
+	/*border: 5px groove #4488aa;*/
+	margin: 8px;
+	padding: 0;
+}
+
+.mainDisplay {
+	background-color: #000;
+	grid-area: display;
+	display: grid;	
+	grid-template-rows:  1fr;
+	grid-template-columns: 1fr 1fr 2fr;
+
+	/*border: 5px groove silver;*/
+}
+
+input {
+	background-color: #000333;
+	border: none;
+	color: #3f3;
+	margin: 5px 15px;
+	font-size: 1.5vw;
+}
+
+
+.servise, .number, .operator, .footer {
+		background-color: rgba(110,180,200,.6);
+}
+
+.servise {
+	grid-area: servise-btn;
+	display: grid;
+	grid-template-rows: repeat(8, 1fr);
+	grid-template-columns: repeat(2, 1fr);
+}
+
+
+.number {
+	grid-area: number-btn;
+	display: grid;
+	grid-template-rows: repeat(4, 1fr);
+	grid-template-columns: repeat(3, 1fr);
+	font-size:3vw;
+}
+
+.operator {
+	grid-area: operator-btn;
+	display: grid;
+	grid-template-rows: repeat(8, 1fr);
+	grid-template-columns: repeat(4, 1fr);
+}
+
+.btn {
+	background-color: #4499aa;
+	color: #221100;
+	font-size: 1.5vw;
+	/*border-radius: 5px;*/
+	/*border: none;*/
+	margin: 1px;
+	padding: auto;
+	line-height: 1.5;
+	font-family: Impact, Charcoal, sans-serif;
+}
+
+.footer {
+	grid-area: footer;
+	display: grid;
+	/*grid-template-rows:1fr 3fr 1fr;
+	grid-template-columns:1fr 2fr 2fr;*/
+}
+
+
