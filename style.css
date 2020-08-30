@@ -4,7 +4,7 @@ h1 {
 }
 
 #calc-body {
-	/* pattern css background */
+	/* pattern css background */  
 	 /*background: 
         linear-gradient(180deg, rgba(248, 184, 139,0) 20%, rgba(248, 184, 139,.1) 20%, rgba(248, 184, 139,.1) 40%, rgba(248, 184, 139,.2) 40%, rgba(248, 184, 139,.2) 60%, rgba(248, 184, 139,.4) 60%, rgba(248, 184, 139,.4) 80%, rgba(248, 184, 139,.5) 80%),
     linear-gradient(45deg, rgba(250, 248, 132,.3) 20%, rgba(250, 248, 132,.4) 20%, rgba(250, 248, 132,.4) 40%, rgba(250, 248, 132,.5) 40%, rgba(250, 248, 132,.5) 60%, rgba(250, 248, 132,.6) 60%, rgba(250, 248, 132,.6) 80%, rgba(250, 248, 132,.7) 80%),
@@ -44,14 +44,14 @@ h1 {
 	padding: 0;
 }
 
-.mainDisplay {
+.mainDisplay {				/* why changes in css not apply? */
 	background-color: #000;
 	grid-area: display;
 	display: grid;	
 	grid-template-rows:  1fr;
 	grid-template-columns: 1fr 1fr 2fr;
-
-	/*border: 5px groove silver;*/
+	padding: 8px;
+	border: 5px groove silver;
 }
 
 input {

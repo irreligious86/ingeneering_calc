@@ -16,8 +16,8 @@ const styles = (elem, style={}) => {
     elem.style.cssText = res;
 }
 styles(mainDisplay, {
-    color: "white",
-    fontSize: "18px"
+    color: "green",   // this item did not work
+    fontSize: "28px"  // this item did not work
 });
 
 const renderDisplay = () => mainDisplay.innerHTML = state.value;
