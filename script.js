@@ -39,7 +39,6 @@ const createButton = (item, index) => {
   button.classList.add('btn');
   button.dataset.id = index;
   button.dataset.value = item;
-
   button.innerHTML = `<em>${item}</em>`;
   return button;
 }
@@ -53,14 +52,15 @@ const createButton = (item, index) => {
 
 
 numberField.addEventListener( 'click', function(event) {
-    //console.log('you ' + event.type + ' key ' + event.target );
-    if (event.target.matches('.btn')) {
+    if (event.target.matches('.btn') ) {
         const id = event.target.dataset.id;
         const elem = event.target;
         const value = event.target.dataset.value;
-        console.log(state.value);
         console.log({id, elem, value});
-        state.value = state.value += value;  // как сделать только цифры и  точку ???
+        if (!isNaN(state.value)) {
+        state.value = state.value += value;  // фильтровать ввод цифровых символов
+        };
+        console.log(state.value);
         renderDisplay();
     }
 });
