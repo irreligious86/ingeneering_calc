@@ -15,15 +15,24 @@ const styles = (elem, style={}) => {
     }
     elem.style.cssText = res;
 }
-styles(mainDisplay, {
-    color: "green",   // this item did not work
-    fontSize: "28px"  // this item did not work
+styles(mainDisplay, {       //
+    color: "green"
 });
+/*      // why can't apply more than one style?!
+styles(mainDisplay, {
+    fontSize: "20 px"  // not allows !!!
+});
+
+styles(mainDisplay, {
+    background: "#004"
+});*/
 
 const renderDisplay = () => mainDisplay.innerHTML = state.value;
 renderDisplay();
 
-let keyName;
+
+//--------------------------------------------------------------------------
+
 const createButton = (item, index) => {
   let button = document.createElement('button');
   keyName = item;
@@ -49,6 +58,7 @@ numberField.addEventListener( 'click', function(event) {
         const id = event.target.dataset.id;
         const elem = event.target;
         const value = event.target.dataset.value;
+        console.log(state.value);
         console.log({id, elem, value});
         state.value = state.value += value;  // как сделать только цифры и  точку ???
         renderDisplay();
