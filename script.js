@@ -3,9 +3,9 @@ let mainDisplay = document.querySelector('.mainDisplay');
 let serviseField = document.querySelector('.servise');
 let numberField = document.querySelector('.number');
 let operatorField = document.querySelector('.operator');
-let state = {
-    value: 0,
-}
+let state = { value: 0, };
+let mainBox = {}; 
+
 
 const styles = (elem, style={}) => {
     let res = "";
@@ -58,12 +58,36 @@ numberField.addEventListener( 'click', function(event) {
         const value = event.target.dataset.value;
         console.log({id, elem, value});
         if (!isNaN(state.value)) {
-        state.value = state.value += value;  // фильтровать ввод цифровых символов
+        state.value = state.value += value;
         };
         console.log(state.value);
         renderDisplay();
     }
 });
+
+
+/*
+если (поле === 0) {
+  если (ввод === .) {
+    ставим . после ноля
+  }
+  иначе {
+    стираем 0 и ставим ввод в поле 
+  }
+}
+*/
+
+
+operatorField.addEventListener( 'click', function(event) {
+    if (event.target.matches('.btn') ) {
+        const id = event.target.dataset.id;
+        const elem = event.target;
+        const value = event.target.dataset.value;
+        console.log({id, elem, value});
+        console.log(state.value);
+    }
+});
+
 
 /********/
 
