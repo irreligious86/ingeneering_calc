@@ -54,7 +54,7 @@ h1 {
 	border: 5px groove silver;
 }
 
-input {
+.input {
 	background-color: #000333;
 	border: none;
 	color: #3f3;

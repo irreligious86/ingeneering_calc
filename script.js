@@ -4,7 +4,13 @@ let serviseField = document.querySelector('.servise');
 let numberField = document.querySelector('.number');
 let operatorField = document.querySelector('.operator');
 let state = { value: 0, };
-let mainBox = {}; 
+let input = document.createElement('input');
+mainDisplay.append('input');
+input.classList.add('input');
+//input.style.fontSize = '18px';
+
+
+let mainBox = "";
 
 
 const styles = (elem, style={}) => {
