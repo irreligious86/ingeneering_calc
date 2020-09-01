@@ -5,25 +5,28 @@ let numberField = document.querySelector('.number');
 let operatorField = document.querySelector('.operator');
 let state = { value: 0, };
 let input = document.createElement('input');
-mainDisplay.append('input');
+mainDisplay.appendChild(input);
 input.classList.add('input');
-//input.style.fontSize = '18px';
+input.setAttribute('placeholder', '0');
+console.log(input);
 
-
-let mainBox = "";
 
 
 const styles = (elem, style={}) => {
     let res = "";
     for (let key in style) {
         //console.log(key, style[key]);
-        res += `${key}: ${style[key]};`
+        res += `${key}: ${style[key]}; `
     }
     elem.style.cssText = res;
 }
-styles(mainDisplay, {       //
+
+/*
+styles(input, {       //
     color: "green"
 });
+*/
+
 /*      // why can't apply more than one style?!
 styles(mainDisplay, {
     fontSize: "20 px"  // not allows !!!
@@ -33,7 +36,7 @@ styles(mainDisplay, {
     background: "#004"
 });*/
 
-const renderDisplay = () => mainDisplay.innerHTML = state.value;
+const renderDisplay = () => input.innerHTML = state.value;
 renderDisplay();
 
 
@@ -41,7 +44,6 @@ renderDisplay();
 
 const createButton = (item, index) => {
   let button = document.createElement('button');
-  keyName = item;
   button.classList.add('btn');
   button.dataset.id = index;
   button.dataset.value = item;
