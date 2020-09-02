@@ -54,7 +54,7 @@ h1 {
 	border: 5px groove silver;
 }
 input[type=text] {
-	/*width: 250px;*/
+	align-content: justify;
 }
 
 .input {

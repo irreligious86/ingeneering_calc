@@ -5,7 +5,10 @@ let numberField = document.querySelector('.number');
 let operatorField = document.querySelector('.operator');
 
 
-let state = { value: 0, };
+let state = { value: '', 
+            buffer: '',
+            result: '',
+};
 
 
 let input = document.createElement('input');
@@ -26,24 +29,9 @@ const styles = (elem, style={}) => {
     elem.style.cssText = res;
 }
 
-/*
-styles(input, {       //
-    color: "green"
-});
-*/
+styles(input, { color: "green"});
 
-/*      // why can't apply more than one style?!
-styles(mainDisplay, {
-    fontSize: "20 px"  // not allows !!!
-});
-
-styles(mainDisplay, {
-    background: "#004"
-});*/
-
-const renderDisplay = () => input.innerHTML = state.value;
-renderDisplay();
-
+const renderDisplay = () => input.setAttribute('value', state.buffer);
 
 //--------------------------------------------------------------------------
 
@@ -72,11 +60,29 @@ numberField.addEventListener( 'click', function(event) {
         console.log({id, elem, value});
         if (!isNaN(state.value)) {
         state.value = state.value += value;
+        state.buffer = state.value;
         };
-        console.log(state.value);
+        console.log("state.value: " + state.value);
         renderDisplay();
     }
 });
+
+operatorField.addEventListener( 'click', function(event) {
+    if (event.target.matches('.btn') ) {
+        const id = event.target.dataset.id;
+        const elem = event.target;
+        const value = event.target.dataset.value;
+        console.log({id, elem, value});
+        state.buffer += (" " + state.value + " ");
+        state.value = value; //                              ???????
+        console.log("state.value: " + state.value);
+        console.log("state.buffer: " + state.buffer);
+        
+    }
+    //return;
+});
+
+
 
 
 /*
@@ -89,60 +95,4 @@ numberField.addEventListener( 'click', function(event) {
   }
 }
 */
-
-
-operatorField.addEventListener( 'click', function(event) {
-    if (event.target.matches('.btn') ) {
-        const id = event.target.dataset.id;
-        const elem = event.target;
-        const value = event.target.dataset.value;
-        console.log({id, elem, value});
-        console.log(state.value);
-    }
-});
-
-
-/********/
-
-///// code from Foma
-/*
-const parent = document.querySelector('div');
-const arr = [
-    {
-        id:1,
-        name:'vasya'
-    },
-    {
-        id:2,
-        name:'petya'
-    },
-] 
-const createUser = name => ({name, id:arr.length});
-const findUser = id => arr.find(user => user.id === +id);
-const delUser = id => arr = [...arr].filter(user => user.id !== +id);
-const updateUser = user => arr = [...arr].map( u => u.id === + user.id ? user : u);
-const userCard = ({id, name}) => (`
-    <div>
-        <h2>${name}</h2>
-        <button data-id='${id}' class='btn-del'>del</button>
-        <button data-id='${id}' class='btn-upt'>update</button>
-    </div>
-`)
-const render = () => parent.innerHtml = arr.map(userCard).join('')
-render();
-parent.addEventListener('click', e => {
-    if(e.target.matches('.btn-del')){
-        const id = e.target.dataset.id
-        delUser(id);
-        render();
-    }
-    if(e.target.matches('.btn-upt')){
-        const id = e.target.dataset.id
-        const user = findUser(id);
-        updateUser({...user, name: 'update name'});
-        render();
-    }
-})
-*/
-
 
