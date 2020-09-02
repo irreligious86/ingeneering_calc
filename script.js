@@ -3,10 +3,15 @@ let mainDisplay = document.querySelector('.mainDisplay');
 let serviseField = document.querySelector('.servise');
 let numberField = document.querySelector('.number');
 let operatorField = document.querySelector('.operator');
+
+
 let state = { value: 0, };
+
+
 let input = document.createElement('input');
 mainDisplay.appendChild(input);
 input.classList.add('input');
+input.setAttribute('type', 'text');
 input.setAttribute('placeholder', '0');
 console.log(input);
 

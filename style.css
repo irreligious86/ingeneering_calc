@@ -53,6 +53,9 @@ h1 {
 	padding: 8px;
 	border: 5px groove silver;
 }
+input[type=text] {
+	/*width: 250px;*/
+}
 
 .input {
 	background-color: #000333;
@@ -61,7 +64,10 @@ h1 {
 	text-shadow: 2px 2px 2px 2px black;
 	margin:3px;
 	padding: 3px;
-	font-size: 1.8vw;
+	font-size: 2vw;
+	height: 2.5vw;
+	width: 75vw;
+
 }
 
 
