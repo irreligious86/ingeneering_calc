@@ -58,8 +58,8 @@ numberField.addEventListener( 'click', function(event) {
         const elem = event.target;
         const value = event.target.dataset.value;
         console.log({id, elem, value});
-        if (!isNaN(state.value)) {
-        state.value = state.value += value;
+        if (!isNaN(value)) {
+        state.value = state.value + value;
         state.buffer = state.value;
         };
         console.log("state.value: " + state.value);
@@ -73,11 +73,11 @@ operatorField.addEventListener( 'click', function(event) {
         const elem = event.target;
         const value = event.target.dataset.value;
         console.log({id, elem, value});
-        state.buffer += (" " + state.value + " ");
+        state.buffer = state.buffer + " " + value;
         state.value = value; //                              ???????
         console.log("state.value: " + state.value);
         console.log("state.buffer: " + state.buffer);
-        
+        renderDisplay();
     }
     //return;
 });
