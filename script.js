@@ -51,7 +51,7 @@ const createButton = (item, index) => {
 // OPERATOR Keys
 ['+','-','*','/','(',')','%','sqrt','x^2','@','@','@','@','@','@','@','@','@','@','@','@','@','@','@','@','@','@','@','@','@','@','@'].forEach(item => operatorField.append(createButton(item)));
 
-
+let a = '';
 numberField.addEventListener( 'click', function(event) {
     if (event.target.matches('.btn') ) {
         const id = event.target.dataset.id;
@@ -60,9 +60,10 @@ numberField.addEventListener( 'click', function(event) {
         console.log({id, elem, value});
         if (!isNaN(value)) {
         state.value = state.value + value;
-        state.buffer = state.value;
-        };
+        state.buffer = a + state.value;
         console.log("state.value: " + state.value);
+        console.log("state.buffer: " + state.buffer);
+        };
         renderDisplay();
     }
 });
@@ -73,8 +74,10 @@ operatorField.addEventListener( 'click', function(event) {
         const elem = event.target;
         const value = event.target.dataset.value;
         console.log({id, elem, value});
-        state.buffer = state.buffer + " " + value;
-        state.value = value; //                              ???????
+        state.value = value;
+        state.buffer = state.buffer + " " + value + " ";
+         state.value = "";  
+        a = state.buffer;                  
         console.log("state.value: " + state.value);
         console.log("state.buffer: " + state.buffer);
         renderDisplay();
