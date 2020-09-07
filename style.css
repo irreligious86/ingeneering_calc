@@ -55,9 +55,7 @@ input[type=text] {
 	font-size: 2vw;
 	height: 2.5vw;
 	width: 75vw;
-
 }
-
 
 .servise, .number, .operator, .footer {
 		background-color: rgba(110,180,200,.6);
@@ -81,8 +79,8 @@ input[type=text] {
 	"btn btn btn"
 	"btn btn btn"
 	"btn btn btn"
-	"btn btn btn"
-	"equal";
+	"btn btn delete"
+	"equal equal equal";
 }
 
 .operator {
@@ -103,9 +101,13 @@ input[type=text] {
 	line-height: 1.5;
 	font-family: Impact, Charcoal, sans-serif;
 }
+.delete {
+	background: red;
+	grid-area: delete;
+}
 
 .equal {
-	background: lightgoldenrodyellow;
+	background: yellow;
 	grid-area: equal;
 }
 

@@ -1,23 +1,23 @@
 
 let mainDisplay = document.querySelector('.mainDisplay'); 
 let serviseField = document.querySelector('.servise');
-let numberField = document.querySelector('.number');
+let numberKeys = document.querySelector('.number');
+let deleteKey = document.createElement('button');
+let equalKey = document.createElement('button');
 let operatorField = document.querySelector('.operator');
+let input = document.createElement('input');
 
 let state = { value: '', 
             buffer: '',
             dataStorage: '',
-            result: '',
+            result: ''
 };
 
-let input = document.createElement('input');
-mainDisplay.appendChild(input);
-input.classList.add('input');
-input.setAttribute('type', 'text');
-input.setAttribute('placeholder', '0');
-console.log(input);
+//----------------------------------------------------------------------
 
+const renderDisplay = () => input.setAttribute('value', state.buffer);
 
+//--------------------------------------------------------------------
 
 const styles = (elem, style={}) => {
     let res = "";
@@ -28,9 +28,17 @@ const styles = (elem, style={}) => {
     elem.style.cssText = res;
 }
 
-styles(input, { color: "green"});
+//-----------------------------------------------------------
 
-const renderDisplay = () => input.setAttribute('value', state.buffer);
+function settingInput () {
+mainDisplay.appendChild(input);
+input.setAttribute('type', 'text');
+input.setAttribute('placeholder', '0'); 
+styles(input, { color: "green"});
+input.classList.add('input');
+}
+settingInput();
+
 
 //--------------------------------------------------------------------------
 
@@ -43,23 +51,49 @@ const createButton = (item, index) => {
   return button;
 }
 
+//-------------------------------------------------------------
+
 //  SERVISE Keys
-['M1','RM1','M2','RM2','M3','RM3','#','#','#','#','#','#','#','#','#','#'].forEach(item => serviseField.append(createButton(item)));
+['M1','RM1','M2','RM2','M3','RM3','#','#'].forEach(item => serviseField.append(createButton(item)));
 //  NUMBER Keys
-[1,2,3,4,5,6,7,8,9,0,'.','<=','='].forEach((item, index) => numberField.append(createButton(item, index)));
+[1,2,3,4,5,6,7,8,9,0,'.'].forEach((item, index) => numberKeys.append(createButton(item, index)));
+//
+numberKeys.appendChild(deleteKey);
+deleteKey.innerHTML = 'DEL';
+//deleteKey.classList.add('')
+
+//---------------------------------------------------------------
+/*
+function settingEqual () {
+    createButton('=');
+    numberKeys.appendChild(equalKey);
+    equalKey.innerHTML = '=' ;
+    //equalKey.classList.add('equal');
+    equalKey.classList.add('btn');
+    //equalKey.setAttribute();
+    //equalKey.classList.add('equal');
+}
+settingEqual();
+*/
+//------------------------------------------------
+
+
+
+
 // OPERATOR Keys
-['+','-','*','/','(',')','%','sqrt','x^2','@','@','@','@','@','@','@','@','@','@','@','@','@','@','@','@','@','@','@','@','@','@','@'].forEach(item => operatorField.append(createButton(item)));
+['+','-','*','/','(',')','sqrt','x^2'].forEach(item => operatorField.append(createButton(item)));
 
-//const equal { pressed: false};
 
-numberField.addEventListener( 'click', function(event) {
+//console.log(deleteKey);
+//console.log(equalKey);
+
+numberKeys.addEventListener( 'click', function(event) {
         const id = event.target.dataset.id;
         const elem = event.target;
         const value = event.target.dataset.value;
-    if (value == '=') { 
-        //equal.pressed = true;
-        console.log('результат: ' + eval(`${state.dataStorage}`));
-    } else {
+
+        //let qqq = eval(state.buffer);
+        //console.log('результат: ' + qqq);
     if (event.target.matches('.btn') ) {
     if (!isNaN(value)) {
         state.value += value;
@@ -69,7 +103,6 @@ numberField.addEventListener( 'click', function(event) {
         };
         renderDisplay();
     }
-}
 });
 
 operatorField.addEventListener( 'click', function(event) {
@@ -77,7 +110,6 @@ operatorField.addEventListener( 'click', function(event) {
         const id = event.target.dataset.id;
         const elem = event.target;
         const value = event.target.dataset.value;
-        console.log({id, elem, value});
         state.value = value;
         state.buffer = state.buffer + " " + value + " ";
         state.value = "";  
@@ -87,18 +119,3 @@ operatorField.addEventListener( 'click', function(event) {
         renderDisplay();
     }
 });
-
-
-eval()
-
-/*
-если (поле === 0) {
-  если (ввод === .) {
-    ставим . после ноля
-  }
-  иначе {
-    стираем 0 и ставим ввод в поле 
-  }
-}
-*/
-
